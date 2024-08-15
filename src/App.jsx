@@ -27,25 +27,32 @@ function App() {
 
   return (
     <div>
-      <input
-        type='text'
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type='email'
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type='tel'
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-      />
-      <button onClick={submitGeneralInfo}>Submit</button>
-      <button onClick={editGeneralInfo}>Edit</button>
-
-      <GeneralInfo data={generalInfo} />
+      <div>
+        <input
+          type='text'
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type='email'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type='tel'
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
+        <button onClick={submitGeneralInfo}>Submit</button>
+        <button onClick={editGeneralInfo}>Edit</button>
+      </div>
+      <div>
+        <GeneralInfo
+          name={generalInfo.name}
+          email={generalInfo.email}
+          phone={generalInfo.phone}
+        />
+      </div>
     </div>
   )
 }
