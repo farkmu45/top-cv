@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import Button from './components/Button'
+import Input from './components/Input'
 import EducationalExperience from './sections/EducationalExperience'
 import GeneralInfo from './sections/GeneralInfo'
 
@@ -48,57 +50,76 @@ function App() {
   }
 
   return (
-    <div>
-      <div>
-        <div>
-          <h1>General Info</h1>
-          <input
-            type='text'
+    <div className='flex gap-16 flex-row p-6'>
+      <div className='max-w-6xl'>
+        <div className='flex flex-col gap-2'>
+          <h1 className='text-2xl font-bold mb-2'>General Info</h1>
+          <Input
+            label='Name'
             value={name}
+            id='name'
+            type='text'
             onChange={(e) => setName(e.target.value)}
           />
-          <input
-            type='email'
+          <Input
+            label='Email'
             value={email}
+            id='email'
+            type='email'
             onChange={(e) => setEmail(e.target.value)}
           />
-          <input
-            type='tel'
+          <Input
+            label='Phone'
             value={phone}
+            id='phone'
+            type='tel'
             onChange={(e) => setPhone(e.target.value)}
           />
-          <button onClick={submitGeneralInfo}>Submit</button>
-          <button onClick={editGeneralInfo}>Edit</button>
+          <div className='grid grid-cols-2 gap-2 mt-5'>
+            <Button onClick={submitGeneralInfo}>Submit</Button>
+            <Button onClick={editGeneralInfo}>Edit</Button>
+          </div>
         </div>
-        <div>
-          <h1>Educational Experience</h1>
-          <input
-            type='text'
+        <div className='flex flex-col gap-2'>
+          <h1 className='text-2xl font-bold mb-2 mt-5'>
+            Educational Experience
+          </h1>
+          <Input
+            label='School'
             value={school}
+            id='school'
+            type='text'
             onChange={(e) => setSchool(e.target.value)}
           />
-          <input
-            type='text'
+
+          <Input
+            label='Degree'
             value={degree}
+            id='degree'
+            type='text'
             onChange={(e) => setDegree(e.target.value)}
           />
-          <input
-            type='date'
+
+          <Input
+            label='Date of Study'
             value={dateOfStudy}
+            id='dateOfStudy'
+            type='date'
             onChange={(e) => setDateOfStudy(e.target.value)}
           />
-          <button onClick={submitEducation}>Submit</button>
+
+          <Button className='mt-5' onClick={submitEducation}>
+            Submit
+          </Button>
         </div>
       </div>
-      <div>
+      <div className='flex flex-col gap-6'>
         <GeneralInfo
           name={generalInfo.name}
           email={generalInfo.email}
           phone={generalInfo.phone}
         />
-        {educations.map((education) => (
-          <EducationalExperience education={education} key={education.id} />
-        ))}
+        <EducationalExperience educations={educations} />
       </div>
     </div>
   )
